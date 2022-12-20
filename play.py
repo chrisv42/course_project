@@ -5,9 +5,7 @@ from util.gameplay_util import (  # pylint: disable=import-error
     get_move_input,
 )
 
-stockfish = Stockfish(
-    "stockfish_15.1_win_x64_avx2/stockfish-windows-2022-x86-64-avx2.exe"
-)
+stockfish = Stockfish()
 COLOUR_MAP = {0: "Black", 1: "White"}
 
 
@@ -26,10 +24,8 @@ def begin_game(argv):
         else:
             move = get_move_input(board)
 
+        print(move)
         board.push(move)
-
-        print(f"{COLOUR_MAP[to_move]} makes move {move}.\n")
-        print(f"{board}\n")
 
         if board.is_fifty_moves() or board.can_claim_threefold_repetition():
             print(board.result(claim_draw=True))
