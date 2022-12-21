@@ -21,10 +21,10 @@ def begin_game(argv):
     while game_in_session:
         if to_move == colour:
             move = get_best_move(board, stockfish)
+            print(move)
         else:
             move = get_move_input(board)
 
-        print(move)
         board.push(move)
 
         if board.is_fifty_moves() or board.can_claim_threefold_repetition():
